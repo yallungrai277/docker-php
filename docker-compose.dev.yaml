@@ -1,0 +1,44 @@
+services:
+  #nginx
+  web:
+    image: nginx:1.25.1-alpine
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+
+  #php  
+  app: 
+    build: 
+      dockerfile: ./php/Dockerfile
+    volumes:
+      - ./app:/var/www/html
+    environment:
+      MYSQL_HOST: db # service name which should be db.
+      MYSQL_PORT: ${MYSQL_PORT}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      REDIS_HOST: cache # service name which maps to redis.
+      REDIS_PORT: ${REDIS_PORT}
+
+  #mysql
+  db:
+    image: mysql:8.0
+    volumes:
+      - mysqldata:/var/lib/mysql
+    ports:
+      - 3306:3306
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+  
+  #redis
+  cache:
+    image: redis:7.0.11-alpine
+
+volumes:
+  mysqldata:
