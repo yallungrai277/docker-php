@@ -15,12 +15,12 @@ services:
       target: app #target only app which will only build app stage from corresponding docker file.
     environment:
       MYSQL_HOST: db # service name which should be db.
-      MYSQL_PORT: ${MYSQL_PORT}
+      MYSQL_PORT: 3306
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
       REDIS_HOST: cache # service name which maps to redis.
-      REDIS_PORT: ${REDIS_PORT}
+      REDIS_PORT: 6379
 
   #mysql
   db:

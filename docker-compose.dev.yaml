@@ -19,19 +19,18 @@ services:
       - ./php/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini:ro
     environment:
       MYSQL_HOST: db # service name which should be db.
-      MYSQL_PORT: ${MYSQL_PORT}
+      MYSQL_PORT: 3306
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
       REDIS_HOST: cache # service name which maps to redis.
-      REDIS_PORT: ${REDIS_PORT}
+      REDIS_PORT: 6379
       # See https://xdebug.org/docs/all_settings#mode
       XDEBUG_MODE: "${XDEBUG_MODE:-off}" # If no environment variable of XDEBUG_MODE is set, default to false.
     
     extra_hosts:
       # Ensure that host.docker.internal is correctly defined on linux
       - host.docker.internal:host-gateway
-
 
   #mysql
   db:
@@ -46,6 +45,16 @@ services:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
+  
+  #phpmyadmin
+  db_interface:
+    image: phpmyadmin
+    restart: unless-stopped
+    ports:
+      - 8080:80
+    environment:
+      - PMA_HOST=db
+      - PMA_PORT=3306
   
   #redis
   cache:
