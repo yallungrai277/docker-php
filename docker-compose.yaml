@@ -12,6 +12,7 @@ services:
   app: 
     build: 
       dockerfile: ./php/Dockerfile
+      target: app #target only app which will only build app stage from corresponding docker file.
     environment:
       MYSQL_HOST: db # service name which should be db.
       MYSQL_PORT: ${MYSQL_PORT}
