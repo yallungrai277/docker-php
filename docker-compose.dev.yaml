@@ -11,7 +11,9 @@ services:
   app: 
     build: 
       dockerfile: ./php/Dockerfile
-      target: app_dev #target app_dev which will build app and app_dev stage from corresponding docker file.
+      target: app_dev 
+      #target app_dev which will build app and app_dev stage from corresponding docker file (Can also use a different build by 
+      # setting an environment variable )
     volumes:
       - ./app:/var/www/html
       - ./php/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini:ro

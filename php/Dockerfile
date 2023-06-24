@@ -27,7 +27,7 @@ COPY --from=composer:2.4 /usr/bin/composer /usr/bin/composer
 # https://medium.com/@softius/faster-docker-builds-with-composer-install-b4d2b15d0fff
 COPY ./app/composer.* .
 
-# install
+# install   
 RUN composer install --prefer-dist --no-scripts --no-progress --no-interaction
 
 # Copy application files to working directory

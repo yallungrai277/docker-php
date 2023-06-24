@@ -6,6 +6,8 @@ Copy `.env.example` to `.env` and fill in your environment variables there
 
 `docker compose -f docker-compose.dev.yaml up --build -d`
 
+`docker compose -f docker-compose.dev.yaml down`
+
 ### Xdebug enabled
 
 `XDEBUG_MODE=debug docker compose -f docker-compose.dev.yaml up --build -d`
@@ -13,3 +15,5 @@ Copy `.env.example` to `.env` and fill in your environment variables there
 #### Production setup
 
 `docker compose up --build -d`
+
+`docker compose down`
