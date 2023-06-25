@@ -7,9 +7,8 @@
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
-                        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                        <a href="/" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Home</a>
-                        <a href="/notes" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Notes</a>
+                        <a href="/" class="<?= uriPathIs('/') ? 'bg-gray-900' : '' ?> text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Home</a>
+                        <a href="/notes" class="<?= uriPathIs('/notes') ? 'bg-gray-900' : '' ?> text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Notes</a>
                     </div>
                 </div>
             </div>
@@ -60,9 +59,8 @@
     <!-- Mobile menu, show/hide based on menu state. -->
     <div class="md:hidden" id="mobile-menu">
         <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="/" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Home</a>
-            <a href="/notes" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Notes</a>
+            <a href="/" class="<?php echo uriPathIs('/') ? 'bg-gray-900' : ''; ?> text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Home</a>
+            <a href="/notes" class="<?php echo uriPathIs('/notes') ? 'bg-gray-900' : ''; ?> text-white block rounded-md px-3 py-2 text-base font-medium">Notes</a>
         </div>
         <div class="border-t border-gray-700 pb-3 pt-4">
             <div class="flex items-center px-5">

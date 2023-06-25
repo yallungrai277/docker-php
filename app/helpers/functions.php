@@ -9,9 +9,9 @@ function dd($value): void
     die();
 }
 
-function urlIs($value): bool
+function uriPathIs($value): bool
 {
-    return $_SERVER['REQUEST_URI'] === $value;
+    return parse_url($_SERVER['REQUEST_URI'])['path'] === $value;
 }
 
 function abort($code = 404): void
