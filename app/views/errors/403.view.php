@@ -18,7 +18,7 @@
                 <div class="bg-red-50 dark:bg-red-800 border border-red-200 dark:border-red-700 rounded-lg p-8 md:p-12 mb-8">
                     <div class="text-xs font-medium inline-flex items-center py-0.5 rounded-md mb-2">
                         <h1 class="text-gray-900 dark:text-white text-3xl md:text-5xl font-extrabold mb-2">
-                            The page you are looking could not be found.
+                            You are not authorized to view this page.
                         </h1>
                     </div>
                 </div>

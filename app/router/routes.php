@@ -1,20 +1,11 @@
 <?php
 
-$routes = [
-    '/' => '../controllers/index.php',
-    '/notes' => '../controllers/notes.php'
-];
+$router->get('/', 'controllers/index.php');
+$router->get('/notes', 'controllers/notes/index.php');
+$router->get('/note', 'controllers/notes/show.php');
+$router->get('/note/create', 'controllers/notes/create.php');
+$router->get('/note/edit', 'controllers/notes/edit.php');
 
-$uri = parse_url($_SERVER['REQUEST_URI'])['path'];
-
-
-function routeToController(string $uri, array $routes = []): void
-{
-    if (array_key_exists($uri, $routes)) {
-        require(__DIR__ . DIRECTORY_SEPARATOR . $routes[$uri]);
-    } else {
-        abort();
-    }
-}
-
-routeToController($uri, $routes);
+$router->delete('/note/delete', 'controllers/notes/delete.php');
+$router->post('/note/store', 'controllers/notes/store.php');
+$router->patch('/note/update', 'controllers/notes/update.php');
