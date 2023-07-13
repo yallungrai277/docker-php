@@ -8,5 +8,5 @@ return [
         'user' => 'user',
         'password' => 'secret',
         'charset' => 'utf8mb4'
-    ]
+    ],
 ];

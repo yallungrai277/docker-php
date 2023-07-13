@@ -4,10 +4,10 @@ use core\App;
 use core\Router;
 use core\Container;
 use core\Database;
+use core\Session;
 use core\SuperGlobal;
 
-
-$container =  new Container;
+$container = new Container;
 
 $container->bind(Database::class, function (array $config = []) {
     if (empty($config)) {
@@ -28,3 +28,5 @@ $uriPath = parse_url($_SERVER[SuperGlobal::REQUEST_URI])['path'];
 $method = $_SERVER[SuperGlobal::REQUEST_METHOD] == SuperGlobal::METHOD_POST && isset($_POST['_method']) ? $_POST['_method'] : $_SERVER[SuperGlobal::REQUEST_METHOD];
 
 $router->route($uriPath, $method);
+
+Session::unflash();

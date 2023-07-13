@@ -6,7 +6,7 @@ use core\Container;
 
 class App
 {
-    protected static $container;
+    protected static Container $container;
 
     public static function setContainer($container): void
     {

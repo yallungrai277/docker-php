@@ -59,3 +59,14 @@ function view(string $viewPath, array $data = []): void
     extract($data);
     require base_path($viewPath);
 }
+
+function authUser(): array|null
+{
+    return $_SESSION['user'] ?? null;
+}
+
+function redirect(string $path): void
+{
+    header('location: ' . $path);
+    exit;
+}
