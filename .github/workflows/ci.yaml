@@ -14,4 +14,4 @@ jobs:
               run: composer install
             - name: Run tests
               working-directory: ./app
-              run: composer run-phpunit
+              run: composer run-test
