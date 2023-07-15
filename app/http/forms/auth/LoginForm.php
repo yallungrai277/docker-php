@@ -1,12 +1,16 @@
 <?php
 
-namespace http\forms;
+namespace http\forms\auth;
 
 use core\Validator;
+use http\forms\BaseForm;
 
 class LoginForm extends BaseForm
 {
-    public function validate(array $attributes): bool
+    /**
+     * {@inheritDoc}
+     */
+    protected function performValidation(array $attributes): void
     {
         if (!Validator::email($attributes['email'])) {
             $this->errors['email'] = 'The provided email is not a valid email address.';
@@ -15,7 +19,5 @@ class LoginForm extends BaseForm
         if (!Validator::string($attributes['password'])) {
             $this->errors['password'] = 'Please enter a valid password.';
         }
-
-        return empty($this->errors);
     }
 }

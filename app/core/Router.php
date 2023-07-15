@@ -2,13 +2,11 @@
 
 namespace core;
 
-use Middleware\Auth;
-use Middleware\Guest;
-use middleware\Middleware;
+use core\middleware\Middleware;
+use core\SuperGlobal;
 
 class Router
 {
-
     const CONTROLLER_PATH = 'http/controllers/';
 
     protected array $routes = [];
@@ -38,10 +36,15 @@ class Router
         return $this->add($uri, $controller, SuperGlobal::METHOD_DELETE);
     }
 
-    public function only(string $key)
+    public function only(string $key): self
     {
         $this->routes[array_key_last($this->routes)]['middleware'] = $key;
         return $this;
+    }
+
+    public function previousUrl(): string
+    {
+        return $_SERVER[SuperGlobal::HTTP_REFERER];
     }
 
     protected function add(string $uri, string $controller, string $method): self

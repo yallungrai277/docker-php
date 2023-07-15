@@ -6,6 +6,7 @@ use core\Container;
 use core\Database;
 use core\Session;
 use core\SuperGlobal;
+use core\exception\ValidationException;
 
 $container = new Container;
 
@@ -27,6 +28,13 @@ require base_path('router/routes.php');
 $uriPath = parse_url($_SERVER[SuperGlobal::REQUEST_URI])['path'];
 $method = $_SERVER[SuperGlobal::REQUEST_METHOD] == SuperGlobal::METHOD_POST && isset($_POST['_method']) ? $_POST['_method'] : $_SERVER[SuperGlobal::REQUEST_METHOD];
 
-$router->route($uriPath, $method);
+try {
+    $router->route($uriPath, $method);
+} catch (ValidationException $e) {
+    Session::flash(SuperGlobal::OLD_FORM_DATA_KEY, $e->old);
+    Session::flash(SuperGlobal::VALIDATION_ERROR_DATA_KEY, $e->errors);
+
+    return redirect($router->previousUrl());
+}
 
 Session::unflash();

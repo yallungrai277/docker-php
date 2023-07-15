@@ -11,4 +11,11 @@ class SuperGlobal
     const METHOD_PUT = 'PUT';
     const METHOD_PATCH = 'PATCH';
     const METHOD_DELETE = 'DELETE';
+
+    const FLASH_SESSION_KEY = '_flash';
+    const OLD_FORM_DATA_KEY = '_old';
+    const VALIDATION_ERROR_DATA_KEY = '_errors';
+
+    const PHPSESSION_COOKIE_NAME = 'PHPSESSID';
+    const HTTP_REFERER = 'HTTP_REFERER';
 }

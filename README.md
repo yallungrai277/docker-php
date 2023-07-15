@@ -17,3 +17,10 @@ Copy `.env.example` to `.env` and fill in your environment variables there
 `docker compose up --build -d`
 
 `docker compose down`
+
+### TODO
+
+1. Notes pagination
+2. Profile pictures upload
+3. Build a better router
+4. Add tests

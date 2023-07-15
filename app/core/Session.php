@@ -21,17 +21,17 @@ class Session
 
     public static function flash(string $key, mixed $value): void
     {
-        $_SESSION['_flash'][$key] = $value;
+        $_SESSION[SuperGlobal::FLASH_SESSION_KEY][$key] = $value;
     }
 
     public static function unflash(): void
     {
-        unset($_SESSION['_flash']);
+        unset($_SESSION[SuperGlobal::FLASH_SESSION_KEY]);
     }
 
     public static function getFlash($key): mixed
     {
-        return $_SESSION['_flash'][$key] ?? null;
+        return $_SESSION[SuperGlobal::FLASH_SESSION_KEY][$key] ?? null;
     }
 
     public static function flush(): void
@@ -45,6 +45,6 @@ class Session
         session_destroy();
 
         $params = session_get_cookie_params();
-        setcookie('PHPSESSID', '', time() - 3600, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
+        setcookie(SuperGlobal::PHPSESSION_COOKIE_NAME, '', time() - 3600, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
     }
 }

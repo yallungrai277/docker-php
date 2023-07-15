@@ -18,9 +18,9 @@
                                 <div class="sm:col-span-4">
                                     <label for="title" class="block text-sm font-medium leading-6 text-gray-900">Title</label>
                                     <div class="mt-2">
-                                        <input id="title" name="title" type="text" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value="<?= $_POST['title'] ?? '' ?>">
-                                        <?php if (isset($errors)) { ?>
-                                            <p class="text-red-500 text-xs mt-2"><?= $errors['title'] ?? '' ?></p>
+                                        <input id="title" name="title" type="text" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value="<?= oldFormData('title') ?? '' ?>">
+                                        <?php if (validationErrors() != null) { ?>
+                                            <p class="text-red-500 text-xs mt-2"><?= validationErrors('title') ?? '' ?></p>
                                         <?php } ?>
                                     </div>
                                 </div>
@@ -30,13 +30,13 @@
                                 <div class="col-span-full">
                                     <label for="body" class="block text-sm font-medium leading-6 text-gray-900">Body</label>
                                     <div class="mt-2">
-                                        <textarea id="body" name="body" rows="3" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"><?= isset($_POST['body']) ? $_POST['body'] : '' ?></textarea>
+                                        <textarea id="body" name="body" rows="3" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"><?= oldFormData('body') ?? '' ?></textarea>
                                     </div>
                                     <p class="mt-3 text-sm leading-6 text-gray-600">Write a few sentences about your
                                         description.</p>
 
-                                    <?php if (isset($errors)) { ?>
-                                        <p class="text-red-500 text-xs mt-2"><?= $errors['body'] ?? '' ?></p>
+                                    <?php if (validationErrors() != null) { ?>
+                                        <p class="text-red-500 text-xs mt-2"><?= validationErrors('body') ?? '' ?></p>
                                     <?php } ?>
                                 </div>
                             </div>

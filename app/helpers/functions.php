@@ -1,6 +1,8 @@
 <?php
 
 use core\Response;
+use core\Session;
+use core\SuperGlobal;
 
 function dd(mixed $value, bool $die = true): void
 {
@@ -43,6 +45,11 @@ function base_path(string $path): string
     return BASE_PATH . $path;
 }
 
+function public_path(string $path)
+{
+    return PUBLIC_PATH . DIRECTORY_SEPARATOR . $path;
+}
+
 function formatDateString(string $dateString, string $format = 'M d Y h:i a', string $fromFormat = 'Y-m-d H:i:s', $timezone = DEFAULT_TIMEZONE): string
 {
     return DateTime::createFromFormat($fromFormat, $dateString, new DateTimeZone($timezone))->format($format);
@@ -69,4 +76,23 @@ function redirect(string $path): void
 {
     header('location: ' . $path);
     exit;
+}
+
+function flashData(string $key): mixed
+{
+    return Session::getFlash($key);
+}
+
+function validationErrors(?string $key = null): mixed
+{
+    $errors = flashData(SuperGlobal::VALIDATION_ERROR_DATA_KEY);
+
+    return is_null($key) || is_null($errors) || !is_array($errors) ? $errors : $errors[$key] ?? null;
+}
+
+function oldFormData(?string $key = null, ?string $default = null)
+{
+    $oldFormData = flashData(SuperGlobal::OLD_FORM_DATA_KEY);
+
+    return (is_null($key) || is_null($oldFormData) || !is_array($oldFormData) ? $oldFormData : $oldFormData[$key] ?? null) ?: $default;
 }
