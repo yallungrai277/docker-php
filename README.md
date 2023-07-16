@@ -24,3 +24,5 @@ Copy `.env.example` to `.env` and fill in your environment variables there
 2. Profile pictures upload
 3. Build a better router
 4. Add tests
+5. Process static files via nginx instead of current router
+6. Remember me as a login functionality
