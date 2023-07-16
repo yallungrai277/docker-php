@@ -28,3 +28,4 @@ Copy `.env.example` to `.env` and fill in your environment variables there
 6. Remember me as a login functionality
 7. Password reset
 8. Use .env file
+9. Add database sql dump file.
