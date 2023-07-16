@@ -26,3 +26,5 @@ Copy `.env.example` to `.env` and fill in your environment variables there
 4. Add tests
 5. Process static files via nginx instead of current router
 6. Remember me as a login functionality
+7. Password reset
+8. Use .env file

@@ -9,6 +9,7 @@
         <?php require base_path('views/partials/banner.view.php'); ?>
         <main>
             <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16">
+                <?php require base_path('views/partials/flash.view.php'); ?>
                 Welcome to notes app.
             </div>
         </main>
