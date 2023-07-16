@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 session_start();
 define('DEFAULT_TIMEZONE', 'Australia/Melbourne');
 define('BASE_PATH', __DIR__ . '/../');
