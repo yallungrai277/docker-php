@@ -3,7 +3,7 @@
 session_start();
 define('DEFAULT_TIMEZONE', 'Australia/Melbourne');
 define('BASE_PATH', __DIR__ . '/../');
-define('PUBLIC_PATH', __DIR__);
+define('PUBLIC_PATH', __DIR__ . '/');
 
 require BASE_PATH . 'vendor/autoload.php';
 require BASE_PATH . 'helpers/functions.php';

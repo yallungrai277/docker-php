@@ -42,12 +42,12 @@ function getDateTime(string $timezone = DEFAULT_TIMEZONE, string $format = 'Y-m-
 
 function base_path(string $path): string
 {
-    return BASE_PATH . $path;
+    return BASE_PATH . ltrim($path, '/');
 }
 
 function public_path(string $path)
 {
-    return PUBLIC_PATH . DIRECTORY_SEPARATOR . $path;
+    return PUBLIC_PATH . ltrim($path, '/');
 }
 
 function formatDateString(string $dateString, string $format = 'M d Y h:i a', string $fromFormat = 'Y-m-d H:i:s', $timezone = DEFAULT_TIMEZONE): string
